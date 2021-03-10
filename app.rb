@@ -63,5 +63,7 @@ post '/new' do
 
 	# перенаправление на главную страницу
 	redirect to '/'
+	
 	erb "You typed: #{content}"
 end
+
