@@ -46,7 +46,14 @@ end
 # обработчик post-запроса /new
 # (браузер отправляет данные на сервер)
 post '/new' do
+
+	# получаем переменную из пост запроса
 	content = params[:content]
+
+	if content.length <= 0
+		@error = 'Type post text'
+		return erb :new
+	end
 
 	erb "You typed: #{content}"
 end
