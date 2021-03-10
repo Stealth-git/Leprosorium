@@ -27,6 +27,7 @@ configure do
 	@db.execute 'CREATE TABLE IF NOT EXISTS "Posts" 
 	(
 	"id" INTEGER PRIMARY KEY AUTOINCREMENT, 
+	"name_author" TEXT,
 	"created_date" DATE, 
 	"content" TEXT
 	)'
@@ -62,13 +63,16 @@ post '/new' do
 	# получаем переменную из пост запроса
 	content = params[:content]
 
+	# получаем имя автора из пост запроса
+	name_author = params[:name_author]
+
 	if content.length <= 0
 		@error = 'Type post text'
 		return erb :new
 	end
 
 	# сохранение данных в БД
-	@db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
+	@db.execute 'insert into Posts (name_author, content, created_date) values (?, ?, datetime())', [name_author, content]
 
 	# перенаправление на главную страницу
 	redirect to '/'
@@ -97,7 +101,7 @@ get '/details/:post_id' do
 end
 
 # обработчик post-запроса /details/...
-# бразер отправляет данные на сервер, мы их принимаем
+# браузер отправляет данные на сервер, мы их принимаем
 post '/details/:post_id' do
 
 	# получаем переменную из url'а

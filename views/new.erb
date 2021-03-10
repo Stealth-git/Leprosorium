@@ -2,7 +2,15 @@
 	Add New Post
 </h2>
 <p>
-	<form action="/new" method="POST" role="form">
+<form action="/new" method="POST" role="form">
+
+		<div class="form-group">
+			<label for="exampleInputName2">Name:</label>
+			<input name="name_author" type="text" class="form-control" id="exampleInputName2" placeholder="Your name">
+		</div>
+
+
+		<label>Post text:</label>
 		<textarea name="content" class="form-control" rows="6" placeholder="Type post text here"></textarea>
 	</br>
 		<button type="submit" class="btn btn-primary">Submit</button>

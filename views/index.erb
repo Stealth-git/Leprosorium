@@ -2,7 +2,9 @@
 
 <% @results.each do |post| %>
 	<p>
-	<%= post['content']%>
+	Name author: <%= post['name_author'] %>
+	<br />
+	Text: <%= post['content']%>
 	<br />
 	Added at <%= post['created_date'] %>
 	<br />
