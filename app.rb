@@ -66,8 +66,12 @@ post '/new' do
 	# получаем имя автора из пост запроса
 	name_author = params[:name_author]
 
-	if content.length <= 0
-		@error = 'Type post text'
+	hh = {  :content => 'Type post text',
+			:name_author => 'Enter name'}
+
+	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
+	
+	if @error != ''
 		return erb :new
 	end
 
