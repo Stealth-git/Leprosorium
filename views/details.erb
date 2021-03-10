@@ -8,7 +8,7 @@
 <br />
 <h4>Comments:</h4>
 <p>
-	<form action="/<%= @row['id']%>" method="POST" role="form">
+	<form action="/details/<%= @row['id']%>" method="POST" role="form">
 		<textarea name="content" class="form-control" rows="6" placeholder="Type comment text here"></textarea>
 	<br />
 		<button type="submit" class="btn btn-primary">Add comment</button>
